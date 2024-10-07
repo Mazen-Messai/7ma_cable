@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cphb4jc4hrhyk"]
+
+[node name="EditingZone" type="Panel"]
+offset_right = 40.0
+
+[node name="NodeEditor" type="Node2D" parent="."]

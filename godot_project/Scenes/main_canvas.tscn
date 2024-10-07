@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmasfqbgbd3i6"]
+
+[ext_resource type="PackedScene" uid="uid://dh175rcikvyyp" path="res://Scenes/top_bar.tscn" id="1_cm7pm"]
+[ext_resource type="PackedScene" uid="uid://c1olouhk6k2ld" path="res://Scenes/left_bar.tscn" id="2_4og47"]
+[ext_resource type="PackedScene" uid="uid://cphb4jc4hrhyk" path="res://Scenes/editing_zone.tscn" id="3_60wq3"]
+
+[node name="Editor" type="Node"]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TopBar" parent="UI" instance=ExtResource("1_cm7pm")]
+layout_mode = 0
+
+[node name="LeftBar" parent="UI" instance=ExtResource("2_4og47")]
+layout_mode = 0
+
+[node name="EditingZone" parent="UI" instance=ExtResource("3_60wq3")]
+layout_mode = 0
