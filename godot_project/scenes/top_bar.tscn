@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dh175rcikvyyp"]
+
+[node name="TopBar" type="HBoxContainer"]
+modulate = Color(0, 0, 0.976471, 1)
+self_modulate = Color(0, 0, 1, 1)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DEBUGTOPBAR" type="ColorRect" parent="."]
+show_behind_parent = true
+top_level = true
+custom_minimum_size = Vector2(1153, 32)
+layout_mode = 2
+color = Color(1, 0, 1, 1)
