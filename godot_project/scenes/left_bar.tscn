@@ -4,6 +4,10 @@
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="DEBUGLEFTBAR" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(1, 0, 0, 1)
+
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 2
 

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmasfqbgbd3i6"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_063vu"]
+[ext_resource type="PackedScene" uid="uid://dh175rcikvyyp" path="res://scenes/top_bar.tscn" id="1_cm7pm"]
+[ext_resource type="PackedScene" uid="uid://c1olouhk6k2ld" path="res://scenes/left_bar.tscn" id="3_jlh3t"]
+[ext_resource type="PackedScene" uid="uid://cphb4jc4hrhyk" path="res://scenes/editing_zone.tscn" id="4_nwtfp"]
+
+[node name="Editor" type="Node"]
+script = ExtResource("1_063vu")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TopBar" parent="UI" instance=ExtResource("1_cm7pm")]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 32.0
+
+[node name="LeftBar" parent="UI" instance=ExtResource("3_jlh3t")]
+layout_mode = 0
+
+[node name="EditingZone" parent="UI" instance=ExtResource("4_nwtfp")]
+layout_mode = 0
