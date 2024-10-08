@@ -19,8 +19,22 @@ layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 32.0
 
+[node name="ResizeHandle" type="Button" parent="UI"]
+layout_mode = 0
+offset_right = 36.0
+offset_bottom = 31.0
+toggle_mode = true
+
 [node name="LeftBar" parent="UI" instance=ExtResource("3_jlh3t")]
 layout_mode = 0
 
 [node name="EditingZone" parent="UI" instance=ExtResource("4_nwtfp")]
 layout_mode = 0
+
+[connection signal="focus_entered" from="UI/ResizeHandle" to="." method="_on_resize_handle_focus_entered"]
+[connection signal="focus_exited" from="UI/ResizeHandle" to="." method="_on_resize_handle_focus_exited"]
+[connection signal="gui_input" from="UI/ResizeHandle" to="." method="_on_resize_handle_gui_input"]
+[connection signal="mouse_entered" from="UI/ResizeHandle" to="." method="_on_resize_handle_mouse_entered"]
+[connection signal="mouse_exited" from="UI/ResizeHandle" to="." method="_on_resize_handle_mouse_exited"]
+[connection signal="pressed" from="UI/ResizeHandle" to="." method="_on_resize_handle_pressed"]
+[connection signal="toggled" from="UI/ResizeHandle" to="." method="_on_resize_handle_toggled"]

@@ -1,14 +1,37 @@
 [gd_scene format=3 uid="uid://dh175rcikvyyp"]
 
-[node name="TopBar" type="HBoxContainer"]
+[node name="TopBar" type="PanelContainer"]
 modulate = Color(0, 0, 0.976471, 1)
 self_modulate = Color(0, 0, 1, 1)
-offset_right = 40.0
+offset_right = 1167.0
 offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="BoutonPreferences" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Preferences"
+
+[node name="BoutonFichier" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(10, 20)
+layout_mode = 2
+text = "Fichier"
+
+[node name="BoutonEdition" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Edition"
+
+[node name="BoutonModules" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Modules"
+
+[node name="BoutonAide" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Aide"
 
 [node name="DEBUGTOPBAR" type="ColorRect" parent="."]
 show_behind_parent = true
-top_level = true
 custom_minimum_size = Vector2(1153, 32)
 layout_mode = 2
 color = Color(1, 0, 1, 1)

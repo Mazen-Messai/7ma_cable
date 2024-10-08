@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://c1olouhk6k2ld"]
 
-[node name="LeftBar" type="VBoxContainer"]
+[node name="LeftBar" type="PanelContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="DEBUGLEFTBAR" type="ColorRect" parent="."]
-layout_mode = 2
-color = Color(1, 0, 0, 1)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
 layout_mode = 2
+
+[node name="DEBUGLEFTBAR" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(1, 0, 0, 1)
