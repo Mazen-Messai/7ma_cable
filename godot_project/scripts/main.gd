@@ -15,14 +15,21 @@ extends Node
 # Initalizing the zone sizes
 @onready var topBarHeight = windowHeight * 0.05
 @onready var leftBarWidth = windowWidth * 0.25
-@onready var resizeHandleSize = windowHeight * 0.1
+@onready var resizeHandleSize = windowHeight * 0.05
 
 # Creating constants to resize the leftbar
-@onready var isEditingZoneBeingResized = false
-
+@onready var isLeftBarBeingResized = false
 
 func _ready() -> void:
-	pass
+	DisplayServer.window_set_min_size(Vector2(1000,610))
+	
+	#Initalizing LeftBar and Editing Zone sizes
+	LEFTBAR.set_size(Vector2(leftBarWidth, windowHeight-topBarHeight))
+	LEFTBAR.set_global_position(Vector2(0,topBarHeight))
+	LEFTBAR.get_child(-1).set_size(Vector2(leftBarWidth, windowHeight-topBarHeight))
+	
+	EDITINGZONE.set_size(Vector2(windowWidth - leftBarWidth, windowHeight - topBarHeight))
+	EDITINGZONE.set_global_position(Vector2(leftBarWidth, topBarHeight))
 
 func _process(delta: float) -> void:
 	# Updating the new window size	
@@ -31,7 +38,15 @@ func _process(delta: float) -> void:
 	
 	# Calculating the zones sizes
 	topBarHeight = windowHeight * 0.05
-	leftBarWidth = windowWidth * 0.25
+	
+	if isLeftBarBeingResized :
+		if windowWidth*0.1 <= get_viewport().get_mouse_position().x and get_viewport().get_mouse_position().x <= windowWidth/2 :
+			leftBarWidth = get_viewport().get_mouse_position().x
+		elif get_viewport().get_mouse_position().x < windowWidth*0.1 :
+			leftBarWidth = windowWidth*0.1
+		else :
+			leftBarWidth = windowWidth/2
+	
 	# Updating the Top Bar size
 	TOPBAR.set_size(Vector2(windowWidth,topBarHeight))
 	TOPBAR.get_child(-1).set_size(Vector2(windowWidth, topBarHeight))
@@ -46,33 +61,15 @@ func _process(delta: float) -> void:
 	EDITINGZONE.set_global_position(Vector2(leftBarWidth, topBarHeight))
 	
 	# Updating the Resize Handle size and position
-	RESIZEHANDLE.set_global_position(Vector2(leftBarWidth, windowHeight/2))
+	RESIZEHANDLE.set_global_position(Vector2(leftBarWidth-resizeHandleSize/2, windowHeight/2))
 	RESIZEHANDLE.set_size(Vector2(resizeHandleSize,resizeHandleSize))
 
 
-func _on_resize_handle_toggled(toggled_on: bool) -> void:
-	print("Si ca marche pas j'explose mon crane")
+func _on_resize_handle_button_down() -> void:
+	isLeftBarBeingResized = true
+	print(isLeftBarBeingResized)
 
 
-func _on_resize_handle_mouse_entered() -> void:
-	print("AAAAAAAAAA")
-
-
-func _on_resize_handle_gui_input(event: InputEvent) -> void:
-	print("BBBBBBBBB")
-
-
-func _on_resize_handle_focus_entered() -> void:
-	print("CCCCCCCC")
-
-
-func _on_resize_handle_mouse_exited() -> void:
-	print("DDDDDDDD")
-
-
-func _on_resize_handle_focus_exited() -> void:
-	print("EEEEEEEEE")
-
-
-func _on_resize_handle_pressed() -> void:
-	print("FFFFFFFFFF")
+func _on_resize_handle_button_up() -> void:
+	isLeftBarBeingResized = false
+	print(isLeftBarBeingResized)

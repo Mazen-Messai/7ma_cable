@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmasfqbgbd3i6"]
+[gd_scene load_steps=6 format=3 uid="uid://dmasfqbgbd3i6"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_063vu"]
 [ext_resource type="PackedScene" uid="uid://dh175rcikvyyp" path="res://scenes/top_bar.tscn" id="1_cm7pm"]
 [ext_resource type="PackedScene" uid="uid://c1olouhk6k2ld" path="res://scenes/left_bar.tscn" id="3_jlh3t"]
 [ext_resource type="PackedScene" uid="uid://cphb4jc4hrhyk" path="res://scenes/editing_zone.tscn" id="4_nwtfp"]
+[ext_resource type="Script" path="res://scripts/button.gd" id="5_r6f1n"]
 
 [node name="Editor" type="Node"]
 script = ExtResource("1_063vu")
@@ -19,22 +20,20 @@ layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 32.0
 
-[node name="ResizeHandle" type="Button" parent="UI"]
-layout_mode = 0
-offset_right = 36.0
-offset_bottom = 31.0
-toggle_mode = true
-
 [node name="LeftBar" parent="UI" instance=ExtResource("3_jlh3t")]
 layout_mode = 0
+offset_left = -337.0
+offset_top = 100.0
+offset_right = -121.0
+offset_bottom = 301.0
 
 [node name="EditingZone" parent="UI" instance=ExtResource("4_nwtfp")]
 layout_mode = 0
 
-[connection signal="focus_entered" from="UI/ResizeHandle" to="." method="_on_resize_handle_focus_entered"]
-[connection signal="focus_exited" from="UI/ResizeHandle" to="." method="_on_resize_handle_focus_exited"]
-[connection signal="gui_input" from="UI/ResizeHandle" to="." method="_on_resize_handle_gui_input"]
-[connection signal="mouse_entered" from="UI/ResizeHandle" to="." method="_on_resize_handle_mouse_entered"]
-[connection signal="mouse_exited" from="UI/ResizeHandle" to="." method="_on_resize_handle_mouse_exited"]
-[connection signal="pressed" from="UI/ResizeHandle" to="." method="_on_resize_handle_pressed"]
-[connection signal="toggled" from="UI/ResizeHandle" to="." method="_on_resize_handle_toggled"]
+[node name="ResizeHandle" type="Button" parent="UI"]
+offset_right = 638.0
+offset_bottom = 349.0
+script = ExtResource("5_r6f1n")
+
+[connection signal="button_down" from="UI/ResizeHandle" to="." method="_on_resize_handle_button_down"]
+[connection signal="button_up" from="UI/ResizeHandle" to="." method="_on_resize_handle_button_up"]
