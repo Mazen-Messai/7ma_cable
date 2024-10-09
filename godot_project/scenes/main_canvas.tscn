@@ -31,6 +31,7 @@ offset_bottom = 301.0
 layout_mode = 0
 
 [node name="ResizeHandle" type="Button" parent="UI"]
+layout_mode = 0
 offset_right = 638.0
 offset_bottom = 349.0
 script = ExtResource("5_r6f1n")

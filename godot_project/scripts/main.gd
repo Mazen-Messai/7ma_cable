@@ -15,7 +15,7 @@ extends Node
 # Initalizing the zone sizes
 @onready var topBarHeight = windowHeight * 0.05
 @onready var leftBarWidth = windowWidth * 0.25
-@onready var resizeHandleSize = windowHeight * 0.05
+@onready var resizeHandleSize = 10
 
 # Creating constants to resize the leftbar
 @onready var isLeftBarBeingResized = false
@@ -30,6 +30,9 @@ func _ready() -> void:
 	
 	EDITINGZONE.set_size(Vector2(windowWidth - leftBarWidth, windowHeight - topBarHeight))
 	EDITINGZONE.set_global_position(Vector2(leftBarWidth, topBarHeight))
+	
+	RESIZEHANDLE.set_size(Vector2(resizeHandleSize,windowHeight-topBarHeight))
+	RESIZEHANDLE.set_global_position(Vector2(leftBarWidth-resizeHandleSize,topBarHeight))
 
 func _process(delta: float) -> void:
 	# Updating the new window size	
@@ -61,8 +64,8 @@ func _process(delta: float) -> void:
 	EDITINGZONE.set_global_position(Vector2(leftBarWidth, topBarHeight))
 	
 	# Updating the Resize Handle size and position
-	RESIZEHANDLE.set_global_position(Vector2(leftBarWidth-resizeHandleSize/2, windowHeight/2))
-	RESIZEHANDLE.set_size(Vector2(resizeHandleSize,resizeHandleSize))
+	RESIZEHANDLE.set_size(Vector2(10,windowHeight-topBarHeight))
+	RESIZEHANDLE.set_global_position(Vector2(leftBarWidth-resizeHandleSize,topBarHeight))
 
 
 func _on_resize_handle_button_down() -> void:
